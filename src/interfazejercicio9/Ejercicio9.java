@@ -5,6 +5,8 @@
  */
 package interfazejercicio9;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author walbonis1
@@ -27,21 +29,151 @@ public class Ejercicio9 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtValorI = new javax.swing.JTextField();
+        txtValorF = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        cmdValor = new javax.swing.JButton();
+        txtValorp = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 51));
+        jLabel1.setText("Centro de comunicacion");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+
+        jLabel2.setText("cantidad inicial de la tarjeta :");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        jLabel3.setText("cantidad final de la tarjeta :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
+
+        txtValorI.setForeground(new java.awt.Color(0, 255, 255));
+        txtValorI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtValorIKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtValorI, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 80, -1));
+
+        txtValorF.setForeground(new java.awt.Color(0, 255, 255));
+        txtValorF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorFActionPerformed(evt);
+            }
+        });
+        txtValorF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtValorFKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtValorF, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 110, -1));
+
+        jButton1.setFont(new java.awt.Font("Yu Mincho", 0, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(204, 0, 0));
+        jButton1.setText("Borrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+
+        cmdValor.setForeground(new java.awt.Color(102, 102, 102));
+        cmdValor.setText("valor a pagar:");
+        cmdValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdValorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+
+        txtValorp.setEditable(false);
+        txtValorp.setForeground(new java.awt.Color(51, 51, 0));
+        jPanel1.add(txtValorp, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 140, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtValorFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorFActionPerformed
+
+    private void cmdValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValorActionPerformed
+       String resul;
+        double vi,vf,consumo,recarga,vtotal;
+        
+        
+         if(txtValorI.getText().isEmpty()){
+             JOptionPane.showMessageDialog(this, "digite la cantidad inicial","error", JOptionPane.ERROR_MESSAGE );
+             txtValorI.requestFocusInWindow();
+         }
+       else if (txtValorF.getText().isEmpty()){
+           JOptionPane.showMessageDialog (this, "digite la catidad  final","error",JOptionPane.ERROR_MESSAGE);
+           txtValorF.requestFocusInWindow();
+       }
+       else{
+       vi =Double.parseDouble(txtValorI.getText());
+       vf =Double.parseDouble(txtValorF.getText());
+          
+       consumo=(vi-vf);
+        recarga=(consumo*20)/100;
+        vtotal=(consumo+recarga);
+       resul =String.valueOf(vtotal);
+        txtValorp.setText(resul);
+       }
+    }//GEN-LAST:event_cmdValorActionPerformed
+
+    private void txtValorIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorIKeyTyped
+     char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) && evt.getKeyChar()!='.') { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              
+          }
+    }//GEN-LAST:event_txtValorIKeyTyped
+
+    private void txtValorFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorFKeyTyped
+     char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) && evt.getKeyChar()!='.') { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              
+          }
+    }//GEN-LAST:event_txtValorFKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    txtValorI.setText("");
+        txtValorF.setText("");
+        txtValorp.setText("");
+        
+        txtValorI.requestFocusInWindow();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +211,14 @@ public class Ejercicio9 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdValor;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtValorF;
+    private javax.swing.JTextField txtValorI;
+    private javax.swing.JTextField txtValorp;
     // End of variables declaration//GEN-END:variables
 }
